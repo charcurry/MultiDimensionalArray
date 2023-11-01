@@ -8,7 +8,6 @@ namespace MultiDimensionalArray
 {
     internal class Program
     {
-        //static int loopVar = 3;
         static char[,] map = new char[,] // dimensions defined by following data:
         {
             {'^','^','^','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
@@ -24,6 +23,15 @@ namespace MultiDimensionalArray
             {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
             {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
         };
+
+        static void ShowLegend()
+        {
+            Console.WriteLine("^ - Mountains");
+            Console.WriteLine("~ - Rivers");
+            Console.WriteLine("` - Grass");
+            Console.WriteLine("* - Trees");
+            Console.WriteLine();
+        }
 
         static void DisplayMap(int scale)
         {
@@ -99,6 +107,7 @@ namespace MultiDimensionalArray
 
         static void Main(string[] args)
         {
+            ShowLegend();
             DisplayMap();
             DisplayMap(1);
             DisplayMap(2);
