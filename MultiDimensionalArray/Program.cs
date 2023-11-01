@@ -8,33 +8,101 @@ namespace MultiDimensionalArray
 {
     internal class Program
     {
+        //static int loopVar = 3;
+        static char[,] map = new char[,] // dimensions defined by following data:
+        {
+            {'^','^','^','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'^','^','`','`','`','`','*','*','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','~','~','~','`','`','`'},
+            {'^','^','`','`','`','*','*','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','~','~','~','`','`','`','`','`'},
+            {'^','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'`','`','`','`','~','~','~','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'`','`','`','`','~','~','~','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'`','`','`','~','~','~','~','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','^','^','`','`','`','`','`','`'},
+            {'`','`','`','`','`','~','~','~','`','`','`','`','`','`','`','`','`','`','`','`','`','^','^','^','^','`','`','`','`','`'},
+            {'`','`','`','`','`','~','~','~','~','`','`','`','`','`','`','`','`','`','`','`','`','`','`','^','^','^','^','`','`','`'},
+            {'`','`','`','`','`','`','`','~','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+            {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
+        };
+
+        static void DisplayMap(int scale)
+        {
+            Console.Write('+');
+            for (int i = 0; i < map.GetLength(1); i++)
+            {
+                for (int z = 0; z < scale; z++)
+                {
+                    Console.Write('-');
+                }
+            }
+            Console.Write('+');
+            Console.WriteLine();
+            for (int y = 0; y < map.GetLength(0); y++)
+            {
+                for (int c = 0; c < scale; c++)
+                {
+                    Console.Write('|');
+                    for (int x = 0; x < map.GetLength(1); x++)
+                    {
+                        for (int z = 0; z < scale; z++)
+                        {
+                            Console.Write(map[y, x]);
+                        }
+                    }
+                    Console.Write('|');
+                    Console.WriteLine();
+                }
+            }
+            Console.Write('+');
+            for (int i = 0; i < map.GetLength(1); i++)
+            {
+                for (int z = 0; z < scale; z++)
+                {
+                    Console.Write('-');
+                }
+            }
+            Console.Write('+');
+
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
+        static void DisplayMap()
+        {
+            Console.Write('+');
+            for (int i = 0; i < map.GetLength(1); i++)
+            {
+                    Console.Write('-');
+            }
+            Console.Write('+');
+            Console.WriteLine();
+            for (int y = 0; y < map.GetLength(0); y++)
+            {
+                    Console.Write('|');
+                    for (int x = 0; x < map.GetLength(1); x++)
+                    {
+                            Console.Write(map[y, x]);
+                    }
+                    Console.Write('|');
+                    Console.WriteLine();
+            }
+            Console.Write('+');
+            for (int i = 0; i < map.GetLength(1); i++)
+            {
+                    Console.Write('-');
+            }
+            Console.Write('+');
+
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("2D Arrays");
-            Console.WriteLine();
-
-            char[,] emoticon;
-            emoticon = new char[5, 5];
-
-            emoticon[2, 0] = '*';
-            emoticon[2, 4] = '*';
-            emoticon[0, 2] = '*';
-            emoticon[3, 3] = '*';
-            emoticon[1, 1] = '*';
-            emoticon[3, 1] = '*';
-            emoticon[1, 3] = '*';
-            emoticon[4, 2] = '*';
-
-            for (int y = 0; y < 5; y++)
-            {
-                for (int x = 0; x < 5; x++)
-                {
-                    Console.Write(emoticon[x, y]);
-                }
-                Console.WriteLine();
-            }
-
-            Console.WriteLine();
+            DisplayMap();
+            DisplayMap(1);
+            DisplayMap(2);
+            DisplayMap(3);
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }
