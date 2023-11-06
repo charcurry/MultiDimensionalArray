@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,38 @@ namespace MultiDimensionalArray
             {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
             {'`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`','`'},
         };
+
+        static void WriteMapChar(int y, int x)
+        {
+            if (map[y, x] == '^')
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(map[y, x]);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (map[y, x] == '*')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write(map[y, x]);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (map[y, x] == '`')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(map[y, x]);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (map[y, x] == '~')
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(map[y, x]);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else
+            {
+                Console.Write(map[y, x]);
+            }
+        }
 
         static void ShowLegend()
         {
@@ -54,34 +87,7 @@ namespace MultiDimensionalArray
                     {
                         for (int z = 0; z < scale; z++)
                         {
-                            if (map[y, x] == '^')
-                            {
-                                Console.ForegroundColor = ConsoleColor.Yellow;
-                                Console.Write(map[y, x]);
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                            else if (map[y, x] == '*')
-                            {
-                                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                Console.Write(map[y, x]);
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                            else if (map[y, x] == '`')
-                            {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.Write(map[y, x]);
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                            else if (map[y, x] == '~')
-                            {
-                                Console.ForegroundColor = ConsoleColor.Blue;
-                                Console.Write(map[y, x]);
-                                Console.ForegroundColor = ConsoleColor.White;
-                            }
-                            else
-                            {
-                                Console.Write(map[y, x]);
-                            }
+                            WriteMapChar(y, x);
                         }
                     }
                     Console.Write('|');
@@ -116,34 +122,7 @@ namespace MultiDimensionalArray
                     Console.Write('|');
                     for (int x = 0; x < map.GetLength(1); x++)
                     {
-                    if (map[y, x] == '^')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.Write(map[y, x]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else if (map[y, x] == '*')
-                    {
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.Write(map[y, x]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                        }
-                    else if (map[y, x] == '`')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(map[y, x]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else if (map[y, x] == '~')
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(map[y, x]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else
-                        {
-                            Console.Write(map[y, x]);
-                        }
+                        WriteMapChar(y, x);
                     }
                     Console.Write('|');
                     Console.WriteLine();
@@ -166,6 +145,7 @@ namespace MultiDimensionalArray
             DisplayMap(1);
             DisplayMap(2);
             DisplayMap(3);
+
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }
